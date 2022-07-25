@@ -1,0 +1,2 @@
+# SqlQueries
+Sql Queries Learning
