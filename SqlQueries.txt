@@ -1,1 +1,7 @@
-
+ SQL - Structured Query Language 
+ 
+ SQL allows us to read or modify data through any relational DBMS. i.e. Oracle Database, MySQLDatabase
+ 
+ Data is stored in a table format
+ 
+ 
