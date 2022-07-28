@@ -218,15 +218,35 @@ select ename, loc from employee1 e, dept1 d where e.deptno=d.deptno and sal = (s
 select designation, count(*) from employee1 where deptno=(select deptno from dept1 where loc='mumbai') group by designation;
 
 // Inner Join - Returns the Matched Records from both the Tables
+select ename,loc from employee1 e, dept1 d where e.deptno=d.deptno;
 
-// Outer Join - Returns the 
+select ename,loc from employee1 e inner join dept1 d on e.deptno=d.deptno;
 
-// Left Outer Join - Returns the 
+select * from employee1;
+insert into employee1 values(6,'fff','clerk',8000,5,null);
 
-// Right Outer Join - Returns the 
+select * from dept1;
 
+// Outer Join - Returns both the Matched and UnMatched Records from both the Tables - 3 types 
 
+// Left Outer Join - Returns the Matched records and Unmatched records from Left table.
+select ename,dname from employee1 left outer join dept1 on employee1.deptno=dept1.deptno;
+
+// Right Outer Join - Returns the Matched records and Unmatched records from Right table.
+select ename,dname from employee1 right outer join dept1 on employee1.deptno=dept1.deptno;
+
+//Full Outer Join - Returns the Matched records and Unmatched records from both the tables.
+select ename,dname from employee1 full outer join dept1 on employee1.deptno=dept1.deptno;
+
+//Self Join - Table joined to itself
+select e.ename, m.ename from employee1 e, employee1 m where e.mgr = m.eno; 
+
+//Natural Join - Table that join automatically by matching PK and FK. No Where clause needed.
+select ename, dname from employee1 natural join dept1;
+
+//Update Query 
+update employee1 set sal=sal+100;
+ 
+//Delete Query
+ 
 commit;
-
-
-
