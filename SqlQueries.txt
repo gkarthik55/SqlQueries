@@ -30,6 +30,8 @@ select pname,div from person1;
 
 select * from person1;
 
+//NULL , Like, Distinct, Order By
+
 select * from person1 where div='A';
 
 select * from person1 where div='A' and age=11;
@@ -67,6 +69,8 @@ select * from person1 where pname like '_b%';
 select * from person1 where pname like '%\_%' escape '\';
 
 select distinct div from person1;
+
+//order by
 
 select * from person1 order by age;
 
@@ -140,5 +144,89 @@ insert into dept1 values(20,'hr','delhi');
 insert into dept1 values(30,'accounts','chennai');
 insert into dept1 values(40,'production','benagaluru');
 
+select * from employee1;
+select * from dept1;
+
+select * from employee1 where designation='manager';
+
+select count(*) from employee1 where designation='manager';
+
+//group by clause
+
+select count(*) from employee1 group by designation;
+
+select designation, count(*) from employee1 group by designation;
+
+select deptno, count(*) from employee1 group by deptno;
+
+select deptno, max(sal) from employee1 group by deptno;
+
+select designation, count(*) from employee1 where sal>10000 group by designation;
+
+select designation, count(*) from employee1 where sal>10000 group by designation;
+
+select deptno, count(*) from employee1 group by deptno;
+
+//having clause
+select deptno, count(*) from employee1 group by deptno having count(*) >= 2;
+
+select designation, count(*) from employee1 where deptno=10 group by designation;
+
+select designation, count(*) from employee1 group by designation having count(*) > 1;
+
+select designation, count(*) from employee1 where deptno=10 group by designation having count(*) > 1;
+
+select count(*) from employee1 where deptno=10;
+
+update dept1 set loc='mumbai' where deptno=20;
+
+//sub query
+
+select count(*) from employee1 where deptno in (select deptno from dept1 where loc='mumbai');
+
+select dname from dept1 where deptno in (select deptno from employee1 where ename='aaa');
+ 
+select avg(sal) from employee1 where deptno in (select deptno from dept1 where dname='hr');
+
+select designation, count(*) from employee1 where deptno=20 group by designation;
+
+select designation, count(*) from employee1 where deptno = (select deptno from dept1 where loc='delhi') group by designation;
+
+select designation, count(*) from employee1 group by designation order by count(*) desc; 
+
+select designation, count(*) from employee1 where deptno=20 group by designation having count(*)>=1 order by count(*); 
+
+//sub queries with aggregate function
+
+select ename from employee1 where sal = (select max(sal) from employee1);
+
+select count(*) from employee1 where sal > (select sal from employee1 where eno=4);
+
+select ename from employee1 where sal > (select sal from employee1 where eno=4);
+
+//Joins 
+
+//cartision product
+select ename, loc, employee1.deptno, dept1.deptno from employee1,dept1;
+
+select ename, loc from employee1 e, dept1 d where e.deptno=d.deptno;
+
+select ename,sal,dname from employee1 e, dept1 d where e.deptno=d.deptno;
+
+select ename, loc from employee1 e, dept1 d where e.deptno=d.deptno and sal = (select max(sal) from employee1);
+
+select designation, count(*) from employee1 where deptno=(select deptno from dept1 where loc='mumbai') group by designation;
+
+// Inner Join - Returns the Matched Records from both the Tables
+
+// Outer Join - Returns the 
+
+// Left Outer Join - Returns the 
+
+// Right Outer Join - Returns the 
+
+
 commit;
+
+
 
