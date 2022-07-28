@@ -1,7 +1,69 @@
- SQL - Structured Query Language 
- 
- SQL allows us to read or modify data through any relational DBMS. i.e. Oracle Database, MySQLDatabase
- 
- Data is stored in a table format
- 
- 
+SQL - Structured Query Language 
+SQL allows us to read or modify data through any relational DBMS. i.e. Oracle Database, MySQLDatabase
+
+Data is stored in a table format.
+Data can be accessed by SQL Statements termed as Queries. 
+
+SQL Statements:
+1. DDL - Data definition language command - Create
+2. DML - Data manipulation language command - Insert, Delete 
+
+create table person1
+(
+    pid number, 
+    pname varchar2(20), 
+    age number, 
+    points number, 
+    div char(1)
+);
+
+//number, varchar2(10) - max 10 characters, char(1) - It should be 1 character. 
+
+select * from person1;
+
+delete from person1 where pid=1;
+
+insert into person1 values(1,'abc',12,45,'A');
+insert into person1 values(2,'pqr',13,null,'B');
+insert into person1 values(3,'xyz',11,0,'A');
+insert into person1 values(4,'rst',12,33,'A');
+insert into person1 values(5,'aba',11,28,'B');
+insert into person1 values(6,'def',14,35,'B');
+
+desc person1;
+
+select pname from person1;
+
+select pname,div from person1;
+
+select * from person1;
+
+select * from person1 where div='A';
+
+select * from person1 where div='A' and age=11;
+
+select * from person1 where div='A' or age=11;
+
+select * from person1 where age>=8 and age <=12;
+
+select * from person1 where age between 8 and 12;
+
+select * from person1 where pname = 'abc' or pname='xyz';
+
+select * from person1 where pname='abc' or pname='xyz' or pname='rst';
+
+select * from person1 where pname in ('abc','xyz','rst');
+
+select * from person1 where points = 45 ;
+
+select * from person1 where points is null;
+
+select * from person1 where points is not null;
+
+
+
+
+
+
+
+
