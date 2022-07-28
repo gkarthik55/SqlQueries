@@ -1,13 +1,3 @@
-SQL - Structured Query Language 
-SQL allows us to read or modify data through any relational DBMS. i.e. Oracle Database, MySQLDatabase
-
-Data is stored in a table format.
-Data can be accessed by SQL Statements termed as Queries. 
-
-SQL Statements:
-1. DDL - Data definition language command - Create
-2. DML - Data manipulation language command - Insert, Delete 
-
 create table person1
 (
     pid number, 
@@ -29,6 +19,8 @@ insert into person1 values(3,'xyz',11,0,'A');
 insert into person1 values(4,'rst',12,33,'A');
 insert into person1 values(5,'aba',11,28,'B');
 insert into person1 values(6,'def',14,35,'B');
+
+insert into person1 values(7,'ra_ts',14,43,'A');
 
 desc person1;
 
@@ -56,14 +48,97 @@ select * from person1 where pname in ('abc','xyz','rst');
 
 select * from person1 where points = 45 ;
 
+// is and is not
 select * from person1 where points is null;
 
 select * from person1 where points is not null;
 
+//expression
+//wildcards  : _ -> match exactly one character, % -> 0 or more characters
 
+select * from person1 where pname like 'a%';
 
+select * from person1 where pname like 'a%a';
 
+select * from person1 where pname like '%a%';
 
+select * from person1 where pname like '_b%';
 
+select * from person1 where pname like '%\_%' escape '\';
 
+select distinct div from person1;
+
+select * from person1 order by age;
+
+select * from person1 order by age asc;
+
+select * from person1 order by age desc;
+
+select * from person1 order by pname desc;
+
+select * from person1 where points is not null order by points desc;
+
+select pname "Person Name", points*2 Percentage from person1;
+
+select pname "Person Name", points*2 Percentage from person1 where points*2>60;
+
+//Execution of Select Query : from -> where -> select -> order by  1
+
+select pname PName, points*2 Percentage from person1 where points*2>60 order by Percentage desc;
+
+//Aggregate fucntions -> Max, Min, Avg, Sum, Count
+
+select max(age) from person1;
+
+select avg(points) from person1 where div='A';
+
+select count(*) from person1;
+
+select count(points) from person1;
+
+select avg(points) from person1;
+
+select avg(points)/count(points) from person1;
+
+select count(*) from person1 where age between 8 and 12;
+
+select count(distinct div) from person1;
+
+create table employee1
+(
+    eno number, 
+    ename varchar2(20), 
+    designation varchar2(20), 
+    sal number,
+    mgr number,
+    deptno number
+);
+
+desc employee1;
+
+select * from employee1;
+
+insert into employee1 values(1,'aaa','salesman',7000,2,10);
+insert into employee1 values(2,'bbb','manager',17000,3,10);
+insert into employee1 values(3,'ccc','president',40000,null,30);
+insert into employee1 values(4,'ddd','clerk',5000,5,20);
+insert into employee1 values(5,'eee','manager',20000,3,20);
+
+create table dept1
+(
+    deptno number, 
+    dname varchar2(20), 
+    loc varchar2(20)
+);
+
+desc dept1;
+
+select * from dept1;
+
+insert into dept1 values(10,'sales','mumbai');
+insert into dept1 values(20,'hr','delhi');
+insert into dept1 values(30,'accounts','chennai');
+insert into dept1 values(40,'production','benagaluru');
+
+commit;
 
