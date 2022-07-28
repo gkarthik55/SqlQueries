@@ -246,7 +246,22 @@ select ename, dname from employee1 natural join dept1;
 
 //Update Query 
 update employee1 set sal=sal+100;
+
+update employee1 set sal=sal+100 where eno=1;
+
+update employee1 set sal=sal+100, ename='aaa' where eno=1;
+
+update employee1 set sal=5000, ename='aaa' where eno=1;
+
  
+select * from employee1;
+
 //Delete Query
+delete from employee1 where eno=2;
+
+rollback;
+
+select * from employee1;
+
  
 commit;
